@@ -1,14 +1,6 @@
 #include QMK_KEYBOARD_H
 
 
-// #define _COLEMAK 0
-// #define _GAMES 1
-// #define _NAV 2
-// #define _MEDIA 3
-// #define _NUM 4
-// #define _SYMBOLS 5
-// #define _FUNC 6
-
 
 enum custom_layers {
   _COLEMAK,
@@ -22,14 +14,36 @@ enum custom_layers {
   _FUNC
 };
 
-enum custom_keycodes {
-  COPY = SAFE_RANGE,
-  CUT,
-  PASTE,
-  UNDO,
-  FIND,
-  SAVE
-};
+// Home Row Mods
+#define HRM_R MT(MOD_LALT,KC_R)
+#define HRM_S MT(MOD_LCTL,KC_S)
+#define HRM_T MT(MOD_LSFT,KC_T)
+#define HRM_D MT(MOD_LGUI,KC_D)
+
+#define HRM_N MT(MOD_LSFT,KC_N)
+#define HRM_E MT(MOD_LCTL,KC_E)
+#define HRM_I MT(MOD_LALT,KC_I)
+#define HRM_H MT(MOD_LGUI,KC_H)
+
+//Layer Toggles
+#define LS_SPC  LT(_NAV,KC_SPC)
+#define LS_TAB  LT(_MEDIA,KC_TAB)
+#define LS_BSPC LT(_NUM,KC_BSPC)
+#define LS_ENT  LT(_SYMBOLS,KC_ENT)
+#define LS_DEL  LT(_FUNC,KC_DEL) 
+
+//MAC desktop movement
+#define DM_UP    LCTL(KC_UP)
+#define DM_LEFT  LCTL(KC_LEFT)
+#define DM_RIGHT LCTL(KC_RIGHT)
+
+//Editing
+#define FIND  LCTL(KC_F)
+#define SAVE  LCTL(KC_S)
+#define COPY  LCTL(KC_C)
+#define CUT   LCTL(KC_X)
+#define PASTE LCTL(KC_V)
+#define UNDO  LCTL(KC_Z)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -37,13 +51,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
     TG(_GAMES),  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                              KC_6,   KC_7,     KC_8,    KC_9,    KC_0,  TG(_MAPGAMES),
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_NO,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                               KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT,  KC_NO,
+      KC_NO,   KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                               KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT,  KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_NO,     KC_A,   MT(MOD_LALT,KC_R),  MT(MOD_LCTL,KC_S),MT(MOD_LSFT,KC_T), KC_G, KC_M, MT(MOD_LSFT,KC_N), MT(MOD_LCTL,KC_E), MT(MOD_LALT,KC_I), KC_O, KC_NO,
+      KC_NO,    KC_A,    HRM_R,   HRM_S,  HRM_T,    KC_G,                               KC_M,   HRM_N,    HRM_E,   HRM_I,   KC_O,   KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_NO,    KC_Z,    KC_X,    KC_C,  MT(MOD_LGUI,KC_D),  KC_V,    KC_ESC, TG(_GW2),  KC_K, MT(MOD_LGUI,KC_H),   KC_COMM,  KC_DOT,  KC_SLSH, KC_NO,
+      KC_NO,    KC_Z,    KC_X,    KC_C,   HRM_D,  KC_V,    KC_ESC,           TG(_GW2),  KC_K,   HRM_H,  KC_COMM,  KC_DOT,  KC_SLSH, KC_NO,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                         KC_ESC,   LT(_NAV,KC_SPC), LT(_MEDIA,KC_TAB),      LT(_SYMBOLS,KC_ENT), LT(_NUM,KC_BSPC), LT(_FUNC,KC_DEL)
+                                     KC_ESC,  LS_SPC,  LS_TAB,                    LS_ENT, LS_BSPC,  LS_DEL
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -79,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                KC_6,     KC_7,    KC_8,    KC_9,    KC_0,   TG(_MAPGAMES),
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_I,     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,                                   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_TRNS,
+     KC_I,     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_TRNS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_M,     KC_T,    KC_A,    KC_S,    KC_D,    KC_F,                               KC_H, MT(MOD_LSFT,KC_J), MT(MOD_LCTL,KC_K), MT(MOD_LALT,KC_L), MT(MOD_LGUI,KC_SCLN), KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -93,13 +107,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   RESET,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_NO,    SAVE,   KC_ENT,   KC_UP,   COPY,     PASTE,                               KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+      KC_NO,    SAVE,   KC_ENT,   KC_UP,   COPY,    PASTE,                             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_NO,    FIND, KC_LEFT, KC_DOWN, KC_RGHT,  CUT,                            KC_NO,  KC_LSFT, KC_LCTL,  KC_LALT, KC_LGUI, KC_NO,
+      KC_NO,    FIND,  KC_LEFT, KC_DOWN,  KC_RGHT,  CUT,                               KC_NO,  KC_LSFT, KC_LCTL,  KC_LALT, KC_LGUI, KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_NO,     KC_NO, KC_HOME,   UNDO,  KC_END,  KC_ENT,  KC_TRNS,          KC_TRNS,   KC_NO,   KC_NO,   KC_NO,  KC_NO,   KC_NO,   KC_NO, 
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_ESC,  KC_SPC, KC_TRNS,                   KC_TRNS, KC_TRNS, KC_TRNS
+                                    KC_ESC,  KC_SPC,  KC_TAB,                   KC_TRNS, KC_TRNS, KC_TRNS
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
 ),
 
@@ -191,21 +205,6 @@ const rgblight_segment_t PROGMEM my_mapgames_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 6, HSV_CYAN},
     {6, 6, HSV_CYAN}
 );
-// const rgblight_segment_t PROGMEM my_media_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-//     {6, 6, HSV_ORANGE}
-// );
-// // Light LEDs 11 & 12 in purple when num layer is active
-// const rgblight_segment_t PROGMEM my_num_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-//     {0, 6, HSV_CHARTREUSE}
-// );
-// // Light LEDs 13 & 14 in green when symbol layer is active
-// const rgblight_segment_t PROGMEM my_symbol_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-//     {0, 6, HSV_CORAL}
-// );
-
-// const rgblight_segment_t PROGMEM my_func_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-//     {0, 6, HSV_GOLD}
-// );
 
 // Now define the array of layers. Later layers take precedence
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
@@ -235,53 +234,12 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(1, layer_state_cmp(state, _GAMES));
     rgblight_set_layer_state(2, layer_state_cmp(state, _GW2));
     rgblight_set_layer_state(3, layer_state_cmp(state, _MAPGAMES));
-    // rgblight_set_layer_state(3, layer_state_cmp(state, _NAV));
-    // rgblight_set_layer_state(3, layer_state_cmp(state, _MEDIA));
-    // rgblight_set_layer_state(4, layer_state_cmp(state, _NUM));
-    // rgblight_set_layer_state(5, layer_state_cmp(state, _SYMBOLS));
-    // rgblight_set_layer_state(6, layer_state_cmp(state, _FUNC));
     return state;
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case COPY:
-        if (record->event.pressed) {
-        } else {
-            tap_code16(LCTL(KC_C));
-        }
-        return false;
-    case CUT:
-        if (record->event.pressed) {
-        } else {
-            tap_code16(LCTL(KC_X));
-        }
-        return false;
-    case PASTE:
-        if (record->event.pressed) {     
-        } else {
-            tap_code16(LCTL(KC_V));
-        }
-        return false;
-    case UNDO:
-        if (record->event.pressed) {     
-        } else {
-            tap_code16(LCTL(KC_Z));
-        }
-        return false;
-    case FIND:
-        if (record->event.pressed) {    
-        } else { 
-            tap_code16(LCTL(KC_F));
-        }
-        return false;
-    case SAVE:
-        if (record->event.pressed) {    
-        } else { 
-            tap_code16(LCTL(KC_S));
-        }
-        return false;
-  }
-  return true;
-}
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//   switch (keycode) {
+//   }
+//   return true;
+// }
 
