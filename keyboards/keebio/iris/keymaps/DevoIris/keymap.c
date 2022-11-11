@@ -12,7 +12,7 @@ enum custom_layers {
   _NUM,
   _SYMBOLS,
   _FUNC
-};
+};          
 
 // Home Row Mods
 #define HRM_R MT(MOD_LALT,KC_R)
@@ -20,7 +20,7 @@ enum custom_layers {
 #define HRM_T MT(MOD_LSFT,KC_T)
 #define HRM_D MT(MOD_LGUI,KC_D)
 
-#define HRM_N MT(MOD_LSFT,KC_N)
+#define HRM_N MT(MOD_RSFT,KC_N)
 #define HRM_E MT(MOD_LCTL,KC_E)
 #define HRM_I MT(MOD_LALT,KC_I)
 #define HRM_H MT(MOD_LGUI,KC_H)

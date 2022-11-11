@@ -46,7 +46,7 @@ enum layers {
 #define HRM_T MT(MOD_LSFT,KC_T)
 #define HRM_D MT(MOD_LCTL,KC_D)
 
-#define HRM_N MT(MOD_LSFT,KC_N)
+#define HRM_N MT(MOD_RSFT,KC_N)
 #define HRM_E MT(MOD_LGUI,KC_E)
 #define HRM_I MT(MOD_LALT,KC_I)
 #define HRM_H MT(MOD_LCTL,KC_H)
