@@ -26,6 +26,6 @@
 
 // Lets you roll mod-tap keys
 #define IGNORE_MOD_TAP_INTERRUPT
-
+#define COMBO_COUNT 1
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 #define CAPS_WORD_IDLE_TIMEOUT 5000

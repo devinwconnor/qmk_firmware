@@ -1,3 +1,4 @@
+// qmk compile -kb keebio/iris/rev5 -km DevoIris
 #include QMK_KEYBOARD_H
 
 
@@ -135,13 +136,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                             KC_NO,   KC_NO,   KC_NO,   KC_NO,    KC_NO,   RESET,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_NO,   KC_GRV,    KC_P7,   KC_P8,  KC_P9,  KC_PAST,                           KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+      KC_NO,   KC_GRV,    KC_P7,   KC_P8,  KC_P9,  KC_PPLS,                           KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_NO,   KC_SCLN,   KC_P4,   KC_P5,   KC_P6,  KC_PPLS,                             KC_NO,  KC_LSFT, KC_LCTL, KC_LALT, KC_NO,  KC_NO,
+     KC_NO,   KC_SCLN,   KC_P4,   KC_P5,   KC_P6,  KC_PAST,                             KC_NO,  KC_LSFT, KC_LCTL, KC_LALT, KC_NO,  KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_NO,   KC_NO,   KC_P1,   KC_P2,   KC_P3,  KC_PSLS, KC_EQL,          KC_TRNS, KC_NO,   KC_LGUI,    KC_NO,  KC_NO,   KC_NO,   KC_NO,
+      KC_NO,   KC_DOT,   KC_P1,   KC_P2,   KC_P3,  KC_PSLS, KC_NO,           KC_TRNS, KC_NO,   KC_LGUI,    KC_NO,  KC_NO,   KC_NO,   KC_NO,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_DOT,    KC_P0,  KC_MINUS,                  KC_TRNS, KC_TRNS,  KC_TRNS
+                                    KC_EQL,   KC_P0,  KC_MINUS,                  KC_TRNS, KC_TRNS,  KC_TRNS
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -153,7 +154,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
       KC_NO,   KC_LPRN, KC_RPRN, KC_EXLM, KC_AT,   KC_COLN,                            KC_NO,  KC_LSFT, KC_LCTL, KC_LALT,  KC_NO,   KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_NO,   KC_LBRC, KC_RCBR, KC_DLR, KC_AMPR,  KC_GRV,  KC_CIRC,         KC_TRNS,  KC_NO,   KC_LGUI,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+      KC_NO,   KC_LBRC, KC_RCBR, KC_DLR, KC_AMPR,  KC_GRV,  KC_NO,         KC_TRNS,  KC_NO,   KC_LGUI,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                      KC_ESC,  KC_SPC,  KC_TAB,                  KC_TRNS, KC_TRNS, KC_TRNS
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
