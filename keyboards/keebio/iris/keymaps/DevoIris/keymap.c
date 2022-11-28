@@ -6,8 +6,9 @@
 enum custom_layers {
   _COLEMAK,
   _GAMES,
-  _GW2,
   _MAPGAMES,
+  _GW2,
+  _SE,
   _NAV,
   _MEDIA,
   _NUM,
@@ -16,15 +17,15 @@ enum custom_layers {
 };          
 
 // Home Row Mods
-#define HRM_R MT(MOD_LALT,KC_R)
-#define HRM_S MT(MOD_LCTL,KC_S)
-#define HRM_T MT(MOD_LSFT,KC_T)
-#define HRM_D MT(MOD_LGUI,KC_D)
+#define HRM_R LALT_T(KC_R)
+#define HRM_S LCTL_T(KC_S)
+#define HRM_T LSFT_T(KC_T)
+#define HRM_D LGUI_T(KC_D)
 
-#define HRM_N MT(MOD_RSFT,KC_N)
-#define HRM_E MT(MOD_LCTL,KC_E)
-#define HRM_I MT(MOD_LALT,KC_I)
-#define HRM_H MT(MOD_LGUI,KC_H)
+#define HRM_N RSFT_T(KC_N)
+#define HRM_E RCTL_T(KC_E)
+#define HRM_I LALT_T(KC_I)
+#define HRM_H RGUI_T(KC_H)
 
 //Layer Toggles
 #define LS_SPC  LT(_NAV,KC_SPC)
@@ -50,13 +51,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_COLEMAK] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-    TG(_GAMES),  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                              KC_6,   KC_7,     KC_8,    KC_9,    KC_0,  TG(_MAPGAMES),
+      KC_NO,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  TG(_GW2),
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_NO,   KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                               KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT,  KC_NO,
+      KC_NO,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                               KC_J,    KC_L,    KC_U,    KC_Y,  KC_QUOT, TG(_GAMES),
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_NO,    KC_A,    HRM_R,   HRM_S,  HRM_T,    KC_G,                               KC_M,   HRM_N,    HRM_E,   HRM_I,   KC_O,   KC_NO,
+      KC_NO,    KC_A,    HRM_R,   HRM_S,  HRM_T,    KC_G,                               KC_M,   HRM_N,    HRM_E,   HRM_I,   KC_O,  TG(_SE),
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-      KC_NO,    KC_Z,    KC_X,    KC_C,   HRM_D,  KC_V,    KC_ESC,           TG(_GW2),  KC_K,   HRM_H,  KC_COMM,  KC_DOT,  KC_SLSH, KC_NO,
+      KC_NO,    KC_Z,    KC_X,    KC_C,   HRM_D,    KC_V,   KC_ESC,           KC_NO,    KC_K,   HRM_H,  KC_COMM,  KC_DOT, KC_SLSH, TG(_MAPGAMES),
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                      KC_ESC,  LS_SPC,  LS_TAB,                    LS_ENT, LS_BSPC,  LS_DEL
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -64,27 +65,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_GAMES] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     TG(_GAMES), KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                              KC_6,     KC_7,    KC_8,    KC_9,    KC_0,   TG(_MAPGAMES),
+      KC_NO,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_M,     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_TRNS,
+      KC_M,    KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  TG(_GAMES),
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_U,     KC_LSFT, KC_A,    KC_S,    KC_D,    KC_F,                               KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, KC_NO,
+      KC_U,    KC_LSFT,  KC_A,    KC_S,    KC_D,    KC_F,                               KC_H,    KC_J,    KC_K,    KC_L,  KC_SCLN,  KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_I,    KC_LCTL,  KC_X,    KC_C,    KC_V,    KC_B,   KC_ESC,           KC_LALT,  KC_N,     KC_M,   KC_COMM,  KC_DOT, KC_SLSH, KC_TRNS,
+      KC_I,    KC_LCTL,  KC_X,    KC_C,    KC_V,    KC_B,   KC_ESC,           KC_LALT,  KC_N,    KC_M,  KC_COMM,  KC_DOT, KC_SLSH,  KC_NO,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                     KC_T,  KC_SPC,  KC_G,                        KC_ENT,  KC_BSPC, KC_DEL
+                                     KC_T,    KC_SPC,   KC_G,                     KC_ENT,  KC_BSPC, KC_DEL
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
   [_MAPGAMES] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     TG(_GAMES), KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                              KC_6,     KC_7,    KC_8,    KC_9,    KC_0,   TG(_MAPGAMES),
+     TG(_GAMES), KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                              KC_6,     KC_7,    KC_8,    KC_9,    KC_0,   KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_C,     KC_TAB,  KC_Q,    KC_UP,    KC_E,    KC_R,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_TRNS,
+     KC_C,     KC_TAB,  KC_Q,    KC_UP,    KC_E,    KC_R,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,   KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_U,     KC_LSFT, KC_LEFT, KC_DOWN, KC_RGHT,  KC_F,                               KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_I,    KC_LCTL,  KC_X,    KC_C,    KC_V,    KC_B,   KC_ESC,          KC_TRNS, KC_N,     KC_M,  KC_COMM,  KC_DOT, KC_SLSH, KC_TRNS,
+     KC_I,    KC_LCTL,  KC_X,    KC_C,    KC_V,    KC_B,   KC_ESC,          KC_LALT, KC_N,     KC_M,  KC_COMM,  KC_DOT, KC_SLSH, TG(_MAPGAMES),
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                      KC_T,  KC_SPC,  KC_G,                        KC_ENT,  KC_BSPC, KC_DEL
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -92,15 +93,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_GW2] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                KC_6,     KC_7,    KC_8,    KC_9,    KC_0,   TG(_MAPGAMES),
+     KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  TG(_GW2),
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_I,     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,  KC_TRNS,
+     KC_I,     KC_T,    KC_Q,    KC_W,    KC_E,    KC_R,                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,   KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_M,     KC_T,    KC_A,    KC_S,    KC_D,    KC_F,                               KC_H, MT(MOD_LSFT,KC_J), MT(MOD_LCTL,KC_K), MT(MOD_LALT,KC_L), MT(MOD_LGUI,KC_SCLN), KC_NO,
+     KC_M,     KC_TAB,   KC_A,    KC_S,    KC_D,    KC_F,                               KC_H, MT(MOD_LSFT,KC_J), MT(MOD_LCTL,KC_K), MT(MOD_LALT,KC_L), MT(MOD_LGUI,KC_SCLN), KC_NO,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_U,     KC_Z,    KC_X,     KC_C,    KC_V,    KC_B,   KC_ESC,            KC_TRNS,   KC_N,     KC_M,  KC_COMM,  KC_DOT, KC_SLSH, KC_TRNS,
+     KC_U,     KC_Z,    KC_X,     KC_C,    KC_V,    KC_B,   KC_GRV,          KC_LALT,   KC_N,    KC_M,  KC_COMM,  KC_DOT, KC_SLSH,  KC_NO,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                      KC_LCTL, KC_SPC,  KC_G,                   KC_TRNS,  KC_TRNS, KC_TRNS
+                                // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
+  ),
+
+  [_SE] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
+      KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                KC_6,     KC_7,    KC_8,    KC_9,    KC_0,   KC_NO,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+       KC_K,   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,                               KC_T,   KC_INS, KC_HOME, KC_PGUP,    KC_P,  KC_NO,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+       KC_I,  KC_LSFT,   KC_A,    KC_S,    KC_D,    KC_F,                               KC_N,   KC_DEL,  KC_END, KC_PGDN,  KC_NO,  TG(_SE),
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+       KC_G,  KC_LCTL,   KC_Z,    KC_C,    KC_V,    KC_B,   KC_LALT,           KC_P,    KC_M,   KC_B,   KC_COMM,  KC_DOT, KC_SLSH,  KC_NO,
+  //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
+                                     KC_LALT, KC_SPC,  KC_X,                      KC_ENT, KC_BSPC,  KC_DEL
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -207,12 +222,18 @@ const rgblight_segment_t PROGMEM my_mapgames_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {6, 6, HSV_CYAN}
 );
 
+const rgblight_segment_t PROGMEM my_se_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 6, HSV_CORAL},     
+    {6, 6, HSV_CORAL}
+);
+
 // Now define the array of layers. Later layers take precedence
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     my_default_layer,
     my_games_layer,
+    my_mapgames_layer,
     my_gw2_layer,
-    my_mapgames_layer
+    my_se_layer
     // my_nav_layer,
     // my_media_layer,        
     // my_num_layer,    // Overrides other layers
@@ -233,8 +254,9 @@ layer_state_t default_layer_state_set_user(layer_state_t state) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(1, layer_state_cmp(state, _GAMES));
-    rgblight_set_layer_state(2, layer_state_cmp(state, _GW2));
-    rgblight_set_layer_state(3, layer_state_cmp(state, _MAPGAMES));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _MAPGAMES));
+    rgblight_set_layer_state(3, layer_state_cmp(state, _GW2));
+    rgblight_set_layer_state(4, layer_state_cmp(state, _SE));
     return state;
 }
 
