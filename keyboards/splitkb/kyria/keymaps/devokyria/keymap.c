@@ -71,6 +71,9 @@ enum layers {
 #define PASTE LGUI(KC_V)
 #define UNDO  LGUI(KC_Z)
 
+#define SCREENSHOT LSG(KC_4)
+#define SLEEP LGUI(LCTL(KC_Q))
+
 // Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
 // The notation `mod/tap` denotes a key that activates the modifier `mod` when held down, and
 // produces the key `tap` when tapped (i.e. pressed and released).
@@ -79,13 +82,13 @@ enum layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_COLEMAK] = LAYOUT(
     //┌────────┬────────┬────────┬────────┬────────┬────────┐                                            ┌────────┬────────┬────────┬────────┬────────┬────────┐
-        KC_NO,    KC_Q,   KC_W,     KC_F,    KC_P,    KC_B,                                                 KC_J,    KC_L,    KC_U,    KC_Y,  KC_QUOT,  KC_NO,
+        KC_ESC,   KC_Q,   KC_W,     KC_F,    KC_P,    KC_B,                                                 KC_J,    KC_L,    KC_U,    KC_Y,  KC_QUOT,  KC_NO,
     //├────────┼────────┼────────┼────────┼────────┼────────┤                                            ├────────┼────────┼────────┼────────┼────────┼────────┤
         KC_NO,    KC_A,   HRM_R,    HRM_S,  HRM_T,    KC_G,                                                 KC_M,   HRM_N,   HRM_E,   HRM_I,    KC_O,   KC_NO,
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┬────────┐        ┌────────┬────────┼────────┼────────┼────────┼────────┼────────┼────────┤
         KC_NO,    KC_Z,    KC_X,    KC_C,   HRM_D,    KC_V,   KC_NO,   KC_NO,            KC_NO,   KC_NO,    KC_K,   HRM_H,   KC_COMM, KC_DOT, KC_SLSH,  KC_NO,
     //└────────┴────────┴────────┼────────┼────────┼────────┼────────┼────────┼        ┼────────┼────────┼────────┼────────┼────────┼────────┴────────┘────────┘
-                                  DM_LEFT, DM_RIGHT, KC_ESC, LS_SPC,  LS_TAB,           LS_ENT, LS_BSPC,  LS_DEL,    KC_NO,  KC_NO
+                                  DM_LEFT, DM_RIGHT, KC_ESC, LS_SPC,  LS_TAB,           LS_ENT, LS_BSPC,  LS_DEL, SCREENSHOT, SLEEP
     //                           └────────└────────┴────────┴────────┴────────┘        └────────└────────┴────────┴────────┴────────┘
 ),
 

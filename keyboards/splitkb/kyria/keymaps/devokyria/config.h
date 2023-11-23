@@ -25,7 +25,15 @@
 #endif
 
 // Lets you roll mod-tap keys
+// default but used in macros
+#define TAPPING_TERM 250
+
+// Prevent normal rollover on alphas from accidentally triggering mods.
 #define IGNORE_MOD_TAP_INTERRUPT
+
+// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
+#define TAPPING_FORCE_HOLD
+
 #define COMBO_COUNT 1
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
-#define CAPS_WORD_IDLE_TIMEOUT 5000
+#define CAPS_WORD_IDLE_TIMEOUT 3000
